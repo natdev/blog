@@ -20,6 +20,7 @@ $controller= 'controller/'.$controller.'Controller.php';
     $action = $action.'Action';
 
     if(function_exists($action)){
+      $title = $tab[0];
       ob_start();
         $action();
       $content = ob_get_clean();
