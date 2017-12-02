@@ -6,4 +6,5 @@ function indexAction(){
   $posts = getLastPost();
 
   require 'view/index/index.php';
+
 }

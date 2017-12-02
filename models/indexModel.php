@@ -1,6 +1,5 @@
 <?php
 
-require 'database/bdd.php';
 
 
 function getLastPost(){
