@@ -1,7 +1,6 @@
 <?php
 require '../models/adminModel.php';
 
-echo "j'existe";
 
 function subscribeAction(){
 
