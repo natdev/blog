@@ -1,10 +1,10 @@
 <?php
-require 'models/indexModel.php';
+require '../models/indexModel.php';
 
 
 function indexAction(){
   $posts = getLastPost();
 
-  require 'view/index/index.php';
+  require '../view/index/index.php';
 
 }

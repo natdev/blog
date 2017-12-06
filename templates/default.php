@@ -9,6 +9,7 @@
 <body>
   <h1>Hello World</h1>
   <a href="<?php echo url("blog/index.php?controller=index&action=index");?>">accueil</a>
+  <a href="<?php echo url("blog/index.php?controller=admin&action=subscribe");?>">Inscription</a>
 <?php echo $content; ?>
 </body>
 </html>
