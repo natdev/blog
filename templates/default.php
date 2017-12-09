@@ -14,7 +14,8 @@
     <div class="menuTop">
       <nav class="navbarTop container">
           <ul class="menuTopIN">
-            <li><a href="<?php echo url("blog/index.php?controller=admin&action=subscribe");?>">Inscription</a></li>
+            <li><a href="<?php echo url("blog/index.php?controller=user&action=subscribe");?>">Inscription</a></li>
+            <li><a href="<?php echo url("blog/index.php?controller=user&action=connexion");?>">Connexion</a></li>
           </ul>
       </nav>
     </div>
@@ -26,13 +27,16 @@
               <li><a href="#">Robotique</a></li>
               <li><a href="#">Jeux Video</a></li>
               <li><a href="#">Contact</a></li>
-            <li><form id="rechercher"><input type="text" placeholder="Chercher un article"><input type="submit" value="ok "></form></li>
+            <li><form id="rechercher"><input type="text" placeholder="Chercher un article"><input type="image" src="../public/img/loupe.png"></form></li>
           </ul>
       </nav>
     </div>
+    <?php
+    if((isset($tab[1]) && $tab[1] == 'index') || $tab[0] == "" ): ?>
     <div class="slider">
 
     </div>
+  <?php endif;?>
   </header>
   <div class="content">
     <?php echo $content; ?>

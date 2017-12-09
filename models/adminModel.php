@@ -33,28 +33,3 @@ function addPost($title, $img = NULL, $video = NULL, $content, $id_user){
   }
 
 }
-
-
-function addUser($pseudo, $email, $passwrord, $acces, $description = NULL, $img=NULL){
-
-  $db = dbConnect();
-
-  $addPost = $db->prepare('INSERT INTO posts(pseudo, email, passwrord, acces, description) VALUES(:pseudo, :email, :passwrord, :acces, :description)');
-  $addPost->execute(array(
-    'pseudo'       =>     $pseudo,
-    'email'        =>     $email,
-    'passwrord'    =>     $passwrord,
-    'acces'        =>     $acces,
-    'description'  =>     $description
-
-  ));
-
-  if(isset($img) && $img !== NULL){
-    $addImg = $db->prepare('INSERT INTO media(img, id_user) VALUES(:img, :id_user)');
-    $addPost->execute(array(
-      'img'      =>     $img,
-      'id_user'  =>     $id_user
-
-    ));
-  }
-}

@@ -4,6 +4,15 @@ body{
   font-family: 'Roboto';
 }
 
+form#rechercher {
+    display: flex;
+    align-items: center;
+}
+
+form#rechercher input[type=text] {
+    margin-right: 0.31rem;
+}
+
 form#rechercher input{
   border-radius: 10px;
   outline: inherit;
@@ -80,4 +89,42 @@ ul.menuIN li a{
 
 .content{
   padding-top: 0.63rem;
+}
+div.wrap{
+  padding-top: 4.66rem;
+}
+
+div.subscribe h1{
+  text-align: center;
+}
+
+form.form {
+    width: 35%;
+    margin: 0 auto;
+}
+
+form.form input[type=text], form.form input[type=email], form.form input[type=password] {
+  width: 100%;
+  border-radius: 8px;
+  height: 1.87rem;
+  border: 0px;
+  box-shadow: 1px 1px 5px inset;
+  outline: inherit;
+  text-align: center;
+}
+
+form.form textarea {
+  width: 100%;
+}
+
+p.formButton{
+  text-align: center;
+}
+
+p.formButton input[type=submit]{
+  border-radius: 8px;
+    border: 0px;
+    padding: 6px;
+    color: #fff;
+    background-color: #b03;
 }
