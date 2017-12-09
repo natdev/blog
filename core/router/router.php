@@ -12,7 +12,7 @@ if(!empty($tab[0]) && !empty($tab[1]))
 
   $controller = $tab[0];
   $action = $tab[1];
-  $title = $tab[0];
+  $title = $tab[1];
 
 $controller= '../controller/'.$controller.'Controller.php';
 
