@@ -7,6 +7,7 @@ body{
 form#rechercher {
     display: flex;
     align-items: center;
+    margin-bottom: 0rem;
 }
 
 form#rechercher input[type=text] {
@@ -81,7 +82,7 @@ ul.menuIN li a{
 }
 
 .slider{
-  margin-top: 4.5rem;
+  margin-top: 3.4rem;
   width: 100%;
   background-color: #ccc;
   height: 31.2rem;
@@ -127,4 +128,9 @@ p.formButton input[type=submit]{
     padding: 6px;
     color: #fff;
     background-color: #b03;
+}
+
+
+ul.menuTopIN li {
+    padding: 0rem 0.31rem;
 }

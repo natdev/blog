@@ -26,6 +26,7 @@ function addUser($pseudo, $email, $password, $acces, $description){
 
 function connexion($pseudo,$password){
 
+
 $db = dbConnect();
 
 $donnee = $db->prepare("SELECT id, pseudo, description, password FROM users WHERE pseudo = :pseudo");
@@ -33,26 +34,25 @@ $donnee->execute(array(
   'pseudo' => $pseudo
 ));
 
-$donnee = $donnee->fetch();
-if(!password_verify($password, $donnee['password'])){
+$user = $donnee->fetch();
+if(!password_verify($password, $user['password'])){
 
 $error_pwd = 'Vous avez rentrer un mauvais mot de passe';
 
 return $error_pwd;
 }
-elseif ($donnee['pseudo'] !== $pseudo) {
+elseif ($user['pseudo'] !== $pseudo) {
 
   $error_ps = 'Le pseudo utilisé n\'existe pas';
 
   return $error_ps;
 }
 else {
-  extract($donnee);
-  session_start();
 
-  $_SESSION['id']       =  $id;
-  $_SESSION['pseudo']   =  $pseudo;
+  $_SESSION['id']       =  $user['id'];
+  $_SESSION['pseudo']   =  $user['pseudo'];
 
-  header('Location:../user/profile');
+  return $_SESSION;
+
 }
 }

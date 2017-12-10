@@ -1,11 +1,12 @@
 <?php
-
+session_start();
 $template = 'default';
 $url = $_SERVER['REQUEST_URI'];
 
+
 $tab = explode('/',$url);
 $sup = array_shift($tab);
-
+print_r($tab);
 
 if(!empty($tab[0]) && !empty($tab[1]))
 {
@@ -23,8 +24,12 @@ if (file_exists($controller)) {
       if(function_exists($action)){
         ob_start();
         $action();
+
         $content = ob_get_clean();
+
+
         require '../templates/'.$template.'.php';
+
       }
       else {
           require '../error.php';

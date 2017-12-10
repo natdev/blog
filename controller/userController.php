@@ -64,16 +64,28 @@ function connexionAction(){
           echo $error_password;
         }
         else{
-            connexion($pseudo, $password);
-        }
+
+
+          $_SESSION = connexion($pseudo,$password);
+          $_SESSION;
+          header('Location:../user/profile/'.$_SESSION['id']);
+         }
       }
+
     }
 
   require '../view/user/connexion.php';
 }
 
+function deconnexionAction(){
+  if(isset($_SESSION)){
+    session_destroy();
+      header('Location:../index/index');
+  }
+}
+
 
 function profileAction(){
-  
+
   require '../view/user/profile.php';
 }

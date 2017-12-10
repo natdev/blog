@@ -1,3 +1,6 @@
+<?php
+
+ ?>
 <div class="wrap">
   <div class="container subscribe">
     <h1>Connectez-vous</h1>
