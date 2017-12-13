@@ -95,7 +95,7 @@ div.wrap{
   padding-top: 4.66rem;
 }
 
-div.subscribe h1{
+div.wrap h1{
   text-align: center;
 }
 
@@ -133,4 +133,33 @@ p.formButton input[type=submit]{
 
 ul.menuTopIN li {
     padding: 0rem 0.31rem;
+}
+
+table.adminTable {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+table.adminTable thead{
+background-color: #b03;
+color:#fff;
+}
+
+table.adminTable tbody tr:nth-child(2n){
+background-color: #ccc;
+color:#fff;
+}
+
+table.adminTable td{
+  text-align: center;
+}
+
+
+table.adminTable th, table.adminTable td{
+  padding:0.63rem;
+}
+
+table.adminTable th a{
+    vertical-align: middle;
+    margin-left: 5px;
 }

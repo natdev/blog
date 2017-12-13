@@ -3,10 +3,11 @@ require '../models/userModel.php';
 
 
 function subscribeAction(){
-extract($_POST);
-if($_POST){
 
-    if(isset($pseudo) && isset($email) && isset($password)){
+if($_POST){
+  $gresp = $_POST['g-recaptcha-response'];
+  extract($_POST);
+    if(isset($pseudo) && isset($email) && isset($password) && isset($gresp)){
       $pseudo           =   htmlspecialchars($pseudo);
       $email            =   htmlspecialchars($email);
       $password         =   htmlspecialchars($password);
@@ -35,8 +36,17 @@ if($_POST){
         echo $error_conf_password;
       }
       else{
-          $password = password_hash($password,PASSWORD_DEFAULT);
-          addUser($pseudo, $email, $password, $acces, $description);
+        $secretKey = "6LdGvDwUAAAAAMAnf1OWNsLeq9xXtlnGa90UffJW";
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$gresp."&remoteip=".$ip);
+        $responseKeys = json_decode($response,true);
+          if(intval($responseKeys["success"]) !== 1) {
+              echo '<h2>Nous n\' acceptons les robots</h2>';
+          }
+          else{
+            $password = password_hash($password,PASSWORD_DEFAULT);
+            addUser($pseudo, $email, $password, $description);
+          }
       }
     }
 
@@ -48,12 +58,17 @@ if($_POST){
 
 function connexionAction(){
 
-  extract($_POST);
   if($_POST){
 
-      if(isset($pseudo) && isset($password)){
+    $gresp = $_POST['g-recaptcha-response'];
+
+
+    extract($_POST);
+
+      if(isset($pseudo) && isset($password) && isset($gresp)){
         $pseudo           =   htmlspecialchars($pseudo);
         $password         =   htmlspecialchars($password);
+
 
         if(empty($pseudo)){
           $error_pseudo = "Veuillez ajouter un mot de passe";
@@ -64,11 +79,18 @@ function connexionAction(){
           echo $error_password;
         }
         else{
-
-
-          $_SESSION = connexion($pseudo,$password);
-          $_SESSION;
-          header('Location:../user/profile/'.$_SESSION['id']);
+          $secretKey = "6LdGvDwUAAAAAMAnf1OWNsLeq9xXtlnGa90UffJW";
+          $ip = $_SERVER['REMOTE_ADDR'];
+          $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$gresp."&remoteip=".$ip);
+          $responseKeys = json_decode($response,true);
+          if(intval($responseKeys["success"]) !== 1) {
+              echo '<h2>Nous n\' acceptons les robots</h2>';
+          }
+          else{
+            $_SESSION = connexion($pseudo,$password);
+            $_SESSION;
+            header('Location:../user/profile/'.$_SESSION['id']);
+          }
          }
       }
 
@@ -80,7 +102,7 @@ function connexionAction(){
 function deconnexionAction(){
   if(isset($_SESSION)){
     session_destroy();
-      header('Location:../index/index');
+      header('Location:../index');
   }
 }
 

@@ -1,15 +1,14 @@
 <?php
 
-function addUser($pseudo, $email, $password, $acces, $description){
+function addUser($pseudo, $email, $password, $description){
 
   $db = dbConnect();
 
-  $addUsers = $db->prepare('INSERT INTO users(pseudo, email, password, acces, description) VALUES(:pseudo, :email, :password, :acces, :description)');
+  $addUsers = $db->prepare('INSERT INTO users(pseudo, email, password, description) VALUES(:pseudo, :email, :password, :description)');
   $addUsers->execute(array(
     'pseudo'       =>     $pseudo,
     'email'        =>     $email,
     'password'     =>     $password,
-    'acces'        =>     $acces,
     'description'  =>     $description
 
   ));
@@ -29,7 +28,7 @@ function connexion($pseudo,$password){
 
 $db = dbConnect();
 
-$donnee = $db->prepare("SELECT id, pseudo, description, password FROM users WHERE pseudo = :pseudo");
+$donnee = $db->prepare("SELECT id, pseudo, description, acces, password FROM users WHERE pseudo = :pseudo");
 $donnee->execute(array(
   'pseudo' => $pseudo
 ));
@@ -51,7 +50,7 @@ else {
 
   $_SESSION['id']       =  $user['id'];
   $_SESSION['pseudo']   =  $user['pseudo'];
-
+  $_SESSION['acces']    =  $user['acces'];
   return $_SESSION;
 
 }

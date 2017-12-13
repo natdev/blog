@@ -1,4 +1,3 @@
-
 <div class="wrap">
   <div class="container subscribe">
     <h1>Inscrivez-Vous</h1>
@@ -12,6 +11,14 @@
           <input type="text" name="email">
       </p>
       <p>
+          <p>Ajoutez un role</p>
+          <select name="acces">
+            <option value="visitor">Visitor</option>
+            <option value="editor">Editor</option>
+            <option value="administrator">administrator</option>
+          </select>
+      </p>
+      <p>
           <p>Ajoutez votre mot de passe</p>
           <input type="password" name="password">
       </p>
@@ -23,9 +30,8 @@
         <textarea name="description" rows="8"></textarea>
       </p>
       <p class="formButton">
-        <input type="submit" value="inscription">
+        <input type="submit" value="Ajouter">
       </p>
-      <div class="g-recaptcha" data-sitekey="6LdGvDwUAAAAAGIokZSvwiKPIoNq_kyaeOsCKlM4"></div>
     </form>
   </div>
 </div>

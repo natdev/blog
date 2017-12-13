@@ -28,7 +28,15 @@ if (file_exists($controller)) {
         $content = ob_get_clean();
 
 
-        require '../templates/'.$template.'.php';
+
+
+        if($controller == '../controller/adminController.php'){
+              require '../templates/admin.php';
+        }
+        else{
+            require '../templates/'.$template.'.php';
+        }
+    
 
       }
       else {
@@ -39,14 +47,30 @@ if (file_exists($controller)) {
 }
 else{
 
-  $controller = $tab[0];
+$controller = $tab[0];
 
-
-if($controller  == 'index' || $controller == ''){
-  $title = "index";
+if($controller  == 'index' || $controller ==''){
+  $title = 'index';
   require '../controller/indexController.php';
   ob_start();
     indexAction();
+  $content = ob_get_clean();
+  require '../templates/'.$template.'.php';
+}
+elseif($controller  == 'contact'){
+  $title = $controller;
+  require '../controller/'.$controller.'Controller.php';
+  ob_start();
+    contactAction();
+  $content = ob_get_clean();
+  require '../templates/'.$template.'.php';
+}
+elseif($controller  == 'admin'){
+  $title = $controller;
+  $template = $controller;
+  require '../controller/'.$controller.'Controller.php';
+  ob_start();
+    adminAction();
   $content = ob_get_clean();
   require '../templates/'.$template.'.php';
 }

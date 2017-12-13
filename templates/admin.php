@@ -14,43 +14,31 @@
     <div class="menuTop">
       <nav class="navbarTop container">
           <ul class="menuTopIN">
-            <?php if(isset($_SESSION['acces']) && $_SESSION['acces'] == "administrator" ){?>
-              <li><a href="../../admin">admin</a></li>
-            <?php } ?>
-            <?php if(!isset($_SESSION['pseudo'])){?>
-              <li><a href="<?php echo url("blog/index.php?controller=user&action=subscribe");?>">Inscription</a></li>
-            <?php }?>
             <?php if(!isset($_SESSION['pseudo'])){?>
               <li><a href="<?php echo url("blog/index.php?controller=user&action=connexion");?>">Connexion</a></li>
             <?php }else{ ?>
                 <li><a href="<?php echo url("blog/index.php?controller=user&action=deconnexion");?>">Deconnexion</a></li>
             <?php } ?>
-            <?php if(isset($_SESSION['pseudo'])){?><li><a><?php echo  $_SESSION['pseudo']; ?></a></li><?php } ?>
+            <?php if(isset($_SESSION['acces']) && $_SESSION['acces'] == "administrator" ){?>
+              <li><a href="../../admin">Admin</a></li>
+              <li><a href="../../">Voir le site</a></li>
+            <?php } ?>
           </ul>
       </nav>
     </div>
     <div class="menu">
       <nav class="navbar container">
           <ul class="menuIN">
-            <li><a href="../../">Accueil</a></li>
-              <li><a href="#">Web Dev</a></li>
-              <li><a href="#">Robotique</a></li>
-              <li><a href="#">Jeux Video</a></li>
-              <li><a href="../../contact">Contact</a></li>
-            <li><form id="rechercher"><input type="text" placeholder="Chercher un article"><input type="image" src="<?php echo BASE_URL."/img/loupe.png"?>"></form></li>
+            <li><a href="../../admin">Tableau de bord</a></li>
+            <li><a href="../../admin/categories">Gestion des catégories</a></li>
+            <li><a href="../../admin/users">Gestion des utilisateurs</a></li>
+            <li><a href="../../admin/posts">Gestion des articles</a></li>
           </ul>
       </nav>
     </div>
-    <?php
-    if((isset($tab[0]) && $tab[0] == 'index') || $tab[0] == "" ): ?>
-    <div class="slider">
-
-    </div>
-  <?php endif;?>
   </header>
   <div class="content">
     <?php echo $content; ?>
   </div>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

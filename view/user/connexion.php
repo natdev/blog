@@ -16,6 +16,7 @@
       <p class="formButton">
         <input type="submit" value="connexion">
       </p>
+      <div class="g-recaptcha" data-sitekey="6LdGvDwUAAAAAGIokZSvwiKPIoNq_kyaeOsCKlM4"></div>
     </form>
   </div>
 </div>
