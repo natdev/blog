@@ -13,14 +13,6 @@ function addUser($pseudo, $email, $password, $description){
 
   ));
 
-  /*if(isset($img) && $img !== NULL){
-    $addImg = $db->prepare('INSERT INTO media(img, id_user) VALUES(:img, :id_user)');
-    $addPost->execute(array(
-      'img'      =>     $img,
-      'id_user'  =>     $id_user
-
-    ));
-  }*/
 }
 
 function connexion($pseudo,$password){

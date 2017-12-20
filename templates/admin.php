@@ -40,5 +40,47 @@
   <div class="content">
     <?php echo $content; ?>
   </div>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <script>tinymce.init({ selector:'textarea',
+  images_upload_handler: function (blobInfo, success, failure) {
+   var xhr, formData;
+   xhr = new XMLHttpRequest();
+   xhr.withCredentials = false;
+   xhr.open('POST', 'addpost.php');
+   xhr.onload = function() {
+     var json;
+
+     if (xhr.status != 200) {
+       failure('HTTP Error: ' + xhr.status);
+       return;
+     }
+     json = JSON.parse(xhr.responseText);
+
+     if (!json || typeof json.location != 'string') {
+       failure('Invalid JSON: ' + xhr.responseText);
+       return;
+     }
+     success(json.location);
+   };
+   formData = new FormData();
+   formData.append('file', blobInfo.blob(), fileName(blobInfo));
+   xhr.send(formData);
+ },
+  theme: 'modern',
+    width: 600,
+    height: 300,
+    plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'save table contextmenu directionality emoticons template paste textcolor'
+    ],
+    content_css: 'css/content.css',
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+
+ });</script>
 </body>
 </html>

@@ -6,7 +6,6 @@ $url = $_SERVER['REQUEST_URI'];
 
 $tab = explode('/',$url);
 $sup = array_shift($tab);
-print_r($tab);
 
 if(!empty($tab[0]) && !empty($tab[1]))
 {
@@ -36,7 +35,7 @@ if (file_exists($controller)) {
         else{
             require '../templates/'.$template.'.php';
         }
-    
+
 
       }
       else {
