@@ -30,7 +30,7 @@
       <nav class="navbar container">
           <ul class="menuIN">
             <li><a href="../../admin">Tableau de bord</a></li>
-            <li><a href="../../admin/categories">Gestion des catégories</a></li>
+            <li><a href="../../admin/categories">Gestion des catégorie</a></li>
             <li><a href="../../admin/users">Gestion des utilisateurs</a></li>
             <li><a href="../../admin/posts">Gestion des articles</a></li>
           </ul>
