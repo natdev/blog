@@ -15,7 +15,7 @@
       <nav class="navbarTop container">
           <ul class="menuTopIN">
             <?php if(isset($_SESSION['acces']) && $_SESSION['acces'] == "administrator" ){?>
-              <li><a href="../../admin">admin</a></li>
+              <li><a href="../../admin">admi</a></li>
             <?php } ?>
             <?php if(!isset($_SESSION['pseudo'])){?>
               <li><a href="<?php echo url("blog/index.php?controller=user&action=subscribe");?>">Inscription</a></li>
